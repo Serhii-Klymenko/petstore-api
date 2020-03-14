@@ -1,6 +1,8 @@
 import io.restassured.http.ContentType;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static io.restassured.RestAssured.given;
 
 public class GetPetTest {
@@ -101,7 +103,7 @@ public class GetPetTest {
 
     @Test
     public void updatePetByDataForm() {
-        int id = 4564;
+        int id = 644;
         given()
                 .log()
                 .all()
@@ -120,7 +122,7 @@ public class GetPetTest {
     @Test
     public void updateExistingPet() {
         String body = "{\n" +
-                "  \"id\": 455,\n" +
+                "  \"id\": 644,\n" +
                 "  \"category\": {\n" +
                 "    \"id\": 0,\n" +
                 "    \"name\": \"string\"\n" +
@@ -153,7 +155,7 @@ public class GetPetTest {
 
     @Test
     public void deletePetById() {
-        int id = 463;
+        int id = 4564;
         given()
                 .log()
                 .all()
