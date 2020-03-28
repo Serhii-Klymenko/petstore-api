@@ -1,7 +1,6 @@
 import io.restassured.http.ContentType;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
-
-import java.util.Random;
 
 import static io.restassured.RestAssured.given;
 
@@ -9,7 +8,8 @@ public class GetPetTest {
 
     @Test
     public void getPetById() {
-        int id = 563;
+        //String id = RandomStringUtils.randomNumeric(3);
+        int id = 644;
         given()
                 .log()
                 .all()
@@ -103,7 +103,7 @@ public class GetPetTest {
 
     @Test
     public void updatePetByDataForm() {
-        int id = 644;
+        String id = RandomStringUtils.randomNumeric(3);
         given()
                 .log()
                 .all()
