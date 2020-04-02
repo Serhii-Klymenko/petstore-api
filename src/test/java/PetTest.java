@@ -46,7 +46,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("status", hasItem(status))
+                .body("status", everyItem(equalTo(status)))
                 .statusCode(200);
     }
 
