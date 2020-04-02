@@ -1,5 +1,6 @@
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +14,8 @@ public class PetTest {
         RequestSpecBuilder spec = new RequestSpecBuilder();
         spec.setBaseUri("https://petstore.swagger.io/v2");
         spec.addHeader("Content-Type", "application/json");
-        RestAssured.requestSpecification = spec.build();    }
+        RestAssured.requestSpecification = spec.build();
+    }
 
     @Test
     public void getPetById() {
@@ -26,8 +28,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                //.body( "id", anyOf(is(id), is("available")))
-                .body("id", is(id))
+                .body( "id", anyOf(is(id), is("available")))
                 .statusCode(200);
     }
 
@@ -42,7 +43,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("status[1]", is((status)))
+                .body("status", hasItem((status)))
                 .statusCode(200);
     }
 
@@ -57,7 +58,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("status[1]", is((status)))
+                .body("status", hasItem((status)))
                 .statusCode(200);
     }
 
@@ -72,7 +73,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("status[1]", is((status)))
+                .body("status", hasItem((status)))
                 .statusCode(200);
     }
 
@@ -157,7 +158,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body( "name", anyOf(is(644), is("Homer")))
+                .body("name", anyOf(is(644), is("Homer")))
                 //.body("id", is(644))
                 .statusCode(200);
     }
