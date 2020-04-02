@@ -1,5 +1,8 @@
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.response.ValidatableResponse;
+import org.hamcrest.Matcher;
+import org.hamcrest.core.Every;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +46,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("status", hasItem((status)))
+                .body("status", hasItem(status))
                 .statusCode(200);
     }
 
@@ -58,14 +61,14 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("status", hasItem((status)))
+                .body("status", everyItem(equalTo(status)))
                 .statusCode(200);
     }
 
     @Test
     public void getPetByStatusPending() {
         String status = "pending";
-        given()
+        ValidatableResponse validatableResponse = given()
                 .log()
                 .all()
                 .when()
@@ -73,12 +76,13 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("status", hasItem((status)))
+                .body("status", everyItem(equalTo(status)))
                 .statusCode(200);
     }
 
     @Test
     public void addNewPetToStore() {
+        String id = "4564";
         String body = "{\n" +
                 "  \"id\": 4564,\n" +
                 "  \"category\": {\n" +
@@ -106,7 +110,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("id", is(4564))
+                .body("id", is(id))
                 .statusCode(200);
     }
 
