@@ -1,9 +1,6 @@
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.response.ValidatableResponse;
-import org.hamcrest.Matcher;
-import org.hamcrest.core.Every;
-import org.junit.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,6 +8,25 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 public class PetTest {
+        int id = 228;
+        String body = "{\n" +
+            "  \"id\": \"" + id + "\",\n" +
+            "  \"category\": {\n" +
+            "    \"id\": 0,\n" +
+            "    \"name\": \"string\"\n" +
+            "  },\n" +
+            "  \"name\": \"UmaTurman\",\n" +
+            "  \"photoUrls\": [\n" +
+            "    \"string\"\n" +
+            "  ],\n" +
+            "  \"tags\": [\n" +
+            "    {\n" +
+            "      \"id\": 0,\n" +
+            "      \"name\": \"string\"\n" +
+            "    }\n" +
+            "  ],\n" +
+            "  \"status\": \"available\"\n" +
+            "}";
 
     @Before
     public void before() {
@@ -22,7 +38,15 @@ public class PetTest {
 
     @Test
     public void getPetById() {
-        int id = 435;
+        given()
+                .body(body)
+                .when()
+                .post("/pet")
+                .then()
+                .log()
+                .all()
+                .body("id", is(id))
+                .statusCode(200);
         given()
                 .log()
                 .all()
@@ -31,7 +55,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body( "id", anyOf(is(id), is("available")))
+                .body("id", anyOf(is(id), is("available")))
                 .statusCode(200);
     }
 
@@ -68,7 +92,7 @@ public class PetTest {
     @Test
     public void getPetByStatusPending() {
         String status = "pending";
-        ValidatableResponse validatableResponse = given()
+        given()
                 .log()
                 .all()
                 .when()
@@ -82,25 +106,6 @@ public class PetTest {
 
     @Test
     public void addNewPetToStore() {
-        String id = "4564";
-        String body = "{\n" +
-                "  \"id\": 4564,\n" +
-                "  \"category\": {\n" +
-                "    \"id\": 0,\n" +
-                "    \"name\": \"string\"\n" +
-                "  },\n" +
-                "  \"name\": \"UmaTurman\",\n" +
-                "  \"photoUrls\": [\n" +
-                "    \"string\"\n" +
-                "  ],\n" +
-                "  \"tags\": [\n" +
-                "    {\n" +
-                "      \"id\": 0,\n" +
-                "      \"name\": \"string\"\n" +
-                "    }\n" +
-                "  ],\n" +
-                "  \"status\": \"available\"\n" +
-                "}";
         given()
                 .log()
                 .all()
@@ -116,8 +121,15 @@ public class PetTest {
 
     @Test
     public void updatePetByDataForm() {
-        //String id = RandomStringUtils.randomNumeric(3);
-        String id = "435";
+        given()
+                .body(body)
+                .when()
+                .post("/pet")
+                .then()
+                .log()
+                .all()
+                .body("id", is(id))
+                .statusCode(200);
         given()
                 .log()
                 .all()
@@ -129,14 +141,23 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("message", is(id))
+                .body("message", is(String.valueOf(id)))
                 .statusCode(200);
     }
 
     @Test
     public void updateExistingPet() {
+        given()
+                .body(body)
+                .when()
+                .post("/pet")
+                .then()
+                .log()
+                .all()
+                .body("id", is(id))
+                .statusCode(200);
         String body = "{\n" +
-                "  \"id\": 644,\n" +
+                "  \"id\": \"" + id + "\",\n" +
                 "  \"category\": {\n" +
                 "    \"id\": 0,\n" +
                 "    \"name\": \"string\"\n" +
@@ -162,14 +183,21 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("name", anyOf(is(644), is("Homer")))
-                //.body("id", is(644))
+                .body("name", anyOf(is(id), is("Homer")))
                 .statusCode(200);
     }
 
     @Test
     public void deletePetById() {
-        String id = "4564";
+        given()
+                .body(body)
+                .when()
+                .post("/pet")
+                .then()
+                .log()
+                .all()
+                .body("id", is(id))
+                .statusCode(200);
         given()
                 .log()
                 .all()
@@ -178,7 +206,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("message", is(id))
+                .body("message", is(String.valueOf(id)))
                 .statusCode(200);
     }
 }
