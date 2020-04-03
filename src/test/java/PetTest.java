@@ -1,15 +1,18 @@
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.filter.log.LogDetail.*;
 import static org.hamcrest.Matchers.*;
 
 public class PetTest {
-        int id = 228;
-        String body = "{\n" +
+    int id = 228;
+    String body = "{\n" +
             "  \"id\": \"" + id + "\",\n" +
             "  \"category\": {\n" +
             "    \"id\": 0,\n" +
@@ -33,7 +36,17 @@ public class PetTest {
         RequestSpecBuilder spec = new RequestSpecBuilder();
         spec.setBaseUri("https://petstore.swagger.io/v2");
         spec.addHeader("Content-Type", "application/json");
+        spec.log(ALL);
         RestAssured.requestSpecification = spec.build();
+///
+        ResponseSpecBuilder response = new ResponseSpecBuilder();
+        response.expectStatusCode(200);
+        RestAssured.responseSpecification = response.build();
+    }
+
+    @After
+    public void after() {
+        deletePetById();
     }
 
     @Test
@@ -43,20 +56,13 @@ public class PetTest {
                 .when()
                 .post("/pet")
                 .then()
-                .log()
-                .all()
                 .body("id", is(id))
                 .statusCode(200);
         given()
-                .log()
-                .all()
                 .when()
                 .get("/pet/{id}", id)
                 .then()
-                .log()
-                .all()
-                .body("id", anyOf(is(id), is("available")))
-                .statusCode(200);
+                .body("id", anyOf(is(id), is("available")));
     }
 
     @Test
@@ -70,8 +76,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("status", everyItem(equalTo(status)))
-                .statusCode(200);
+                .body("status", everyItem(equalTo(status)));
     }
 
     @Test
@@ -100,8 +105,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("status", everyItem(equalTo(status)))
-                .statusCode(200);
+                .body("status", everyItem(equalTo(status)));
     }
 
     @Test
@@ -115,8 +119,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("id", is(id))
-                .statusCode(200);
+                .body("id", is(id));
     }
 
     @Test
@@ -141,8 +144,7 @@ public class PetTest {
                 .then()
                 .log()
                 .all()
-                .body("message", is(String.valueOf(id)))
-                .statusCode(200);
+                .body("message", is(String.valueOf(id)));
     }
 
     @Test
