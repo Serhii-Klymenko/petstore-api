@@ -165,3 +165,6 @@ int id = 228;
                 .body("message", is(String.valueOf(id)));
     }
 }
+
+//long createPetId = response.extract().path("id")
+//System.out.println(createPetId)
