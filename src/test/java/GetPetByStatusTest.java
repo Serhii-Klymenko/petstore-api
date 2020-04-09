@@ -9,7 +9,7 @@ import static io.restassured.filter.log.LogDetail.ALL;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 
-public class GetPetByStatus {
+public class GetPetByStatusTest {
 
     @Before
     public void before() {

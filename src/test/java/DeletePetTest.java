@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.filter.log.LogDetail.ALL;
-import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.is;
 
 public class DeletePetTest {
@@ -70,7 +69,6 @@ public class DeletePetTest {
                 .all()
                 .statusCode(404);
     }
-
 
     @Test
     public void deletePetById() {
