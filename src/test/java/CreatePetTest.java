@@ -1,11 +1,14 @@
 import org.junit.After;
 import org.junit.Test;
 
+import java.util.Random;
+
 public class CreatePetTest {
 
     PetEndpoint petEndpoint = new PetEndpoint();
+    Random random = new Random();
 
-    long id = 444;
+    int id = random.nextInt(10000);
 
     @After
     public void deletePet() {
@@ -32,6 +35,7 @@ public class CreatePetTest {
                 "  ],\n" +
                 "  \"status\": \"available\"\n" +
                 "}";
+
         petEndpoint.createPet(body);
     }
 }
