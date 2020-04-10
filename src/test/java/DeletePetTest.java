@@ -1,10 +1,6 @@
 import io.restassured.response.ValidatableResponse;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
 
 public class DeletePetTest {
 
@@ -36,11 +32,6 @@ public class DeletePetTest {
         ValidatableResponse response = petEndpoint.createPet(body);
         petId = response.extract().path("id");
     }
-
-   /* @After
-    public void getPet() {
-        petEndpoint.getPet(petId);
-    }*/
 
     @Test
     public void deletePetById() {
