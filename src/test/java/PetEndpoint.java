@@ -52,7 +52,7 @@ public class PetEndpoint {
                 .then()
                 .log()
                 .all()
-                //.body("message", is(String.valueOf(petId)))
+                .body("message", is(String.valueOf(petId)))
                 .statusCode(200);
     }
 

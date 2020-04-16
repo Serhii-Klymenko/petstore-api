@@ -13,11 +13,11 @@ public class Pet {
 
     public Pet(long id, String name, String status) {
         this.id = id;
-        this.category = new Category(0, "Scooby");
+        this.category = new Category(3445, "Scooby");
         this.name = name;
-        this.photoUrls = new ArrayList<String>(Arrays.asList("Photo", "mjk"));
+        this.photoUrls = new ArrayList<String>(Arrays.asList("Photo", "Photo"));
         this.status = status;
-        this.tags = tags;
+        this.tags = new ArrayList<Object>(Arrays.asList(new Tags(65, "Lassy")));
     }
 
     public long getId() {
