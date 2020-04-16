@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,9 +14,9 @@ public class Pet {
         this.id = id;
         this.category = new Category(3445, "Scooby");
         this.name = name;
-        this.photoUrls = new ArrayList<String>(Arrays.asList("Photo", "Photo"));
+        this.photoUrls = Arrays.asList("Photo", "Photo");
         this.status = status;
-        this.tags = new ArrayList<Object>(Arrays.asList(new Tags(65, "Lassy")));
+        this.tags = Arrays.asList(new Tags(65, "Lassy"));
     }
 
     public long getId() {
