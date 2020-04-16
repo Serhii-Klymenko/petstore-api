@@ -5,13 +5,12 @@ import org.junit.Test;
 
 public class UpdatePetTest {
 
-    PetEndpoint petEndpoint = new PetEndpoint();
-
-    long petId;
+    private PetEndpoint petEndpoint = new PetEndpoint();
+    private long petId;
 
     @Before
     public void createPet() {
-        Pet pet = new Pet("0", "Bob", "available");
+        Pet pet = new Pet(0, "Bob", "available");
         ValidatableResponse response = petEndpoint.createPet(pet);
         petId = response.extract().path("id");
     }
@@ -23,24 +22,7 @@ public class UpdatePetTest {
 
     @Test
     public void updateExistingPet() {
-        String body = "{\n" +
-                "  \"id\": \"" + petId + "\",\n" +
-                "  \"category\": {\n" +
-                "    \"id\": 0,\n" +
-                "    \"name\": \"string\"\n" +
-                "  },\n" +
-                "  \"name\": \"Homer\",\n" +
-                "  \"photoUrls\": [\n" +
-                "    \"string\"\n" +
-                "  ],\n" +
-                "  \"tags\": [\n" +
-                "    {\n" +
-                "      \"id\": 0,\n" +
-                "      \"name\": \"string\"\n" +
-                "    }\n" +
-                "  ],\n" +
-                "  \"status\": \"available\"\n" +
-                "}";
-        petEndpoint.updatePet(body, petId);
+        Pet pet = new Pet(petId, "UmaTurman", "sold");
+        petEndpoint.updatePet(pet, petId);
     }
 }

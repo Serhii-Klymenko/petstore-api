@@ -52,19 +52,19 @@ public class PetEndpoint {
                 .then()
                 .log()
                 .all()
-                .body("message", is(String.valueOf(petId)))
+                //.body("message", is(String.valueOf(petId)))
                 .statusCode(200);
     }
 
-    public ValidatableResponse updatePet(String body, long petId) {
+    public ValidatableResponse updatePet(Pet pet, long petId) {
         return given()
-                .body(body)
+                .body(pet)
                 .when()
                 .put(UPDATE_PET_BY_ID)
                 .then()
                 .log()
                 .all()
-                .body("name", anyOf(is(petId), is("Homer")));
+                .body("name", anyOf(is(petId), is("UmaTurman")));
     }
 
     public ValidatableResponse updatePetByFormData(long petId) {

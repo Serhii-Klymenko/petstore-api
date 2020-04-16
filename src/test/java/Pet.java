@@ -1,23 +1,30 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Pet {
-    private String id;
+    private long id;
     private Category category;
     private String name;
-    private String[] photoUrls;
-    private Object[] tags;
+    private List<String> photoUrls;
+    private List<Object> tags;
     private String status;
 
-    public Pet(String id, String name, String status) {
+
+    public Pet(long id, String name, String status) {
         this.id = id;
-        this.category = new Category("0", "Scooby");
+        this.category = new Category(0, "Scooby");
         this.name = name;
+        this.photoUrls = new ArrayList<String>(Arrays.asList("Photo", "mjk"));
         this.status = status;
+        this.tags = tags;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public Object getCategory() {
+    public Category getCategory() {
         return category;
     }
 
@@ -25,11 +32,11 @@ public class Pet {
         return name;
     }
 
-    public String[] getPhotoUrls() {
+    public List<String> getPhotoUrls() {
         return photoUrls;
     }
 
-    public Object[] getTags() {
+    public List<Object> getTags() {
         return tags;
     }
 

@@ -1,13 +1,13 @@
 public class Category {
-    private String id;
+    private long id;
     private String name;
 
-    public Category(String id, String name) {
+    public Category(long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 

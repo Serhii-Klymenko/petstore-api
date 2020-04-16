@@ -5,13 +5,12 @@ import org.junit.Test;
 
 public class UpdatePetByFormDataTest {
 
-    PetEndpoint petEndpoint = new PetEndpoint();
-
-    long petId;
+    private PetEndpoint petEndpoint = new PetEndpoint();
+    private long petId;
 
     @Before
     public void createPet() {
-        Pet pet = new Pet("0", "Bob", "available");
+        Pet pet = new Pet(0, "Bob", "available");
         ValidatableResponse response = petEndpoint.createPet(pet);
         petId = response.extract().path("id");
     }
