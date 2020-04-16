@@ -23,9 +23,9 @@ public class PetEndpoint {
                 .all();
     }
 
-    public ValidatableResponse createPet(String body) {
+    public ValidatableResponse createPet(Pet pet) {
         return given()
-                .body(body)
+                .body(pet)
                 .when()
                 .post(CREATE_PET)
                 .then()
@@ -65,7 +65,6 @@ public class PetEndpoint {
                 .log()
                 .all()
                 .body("name", anyOf(is(petId), is("Homer")));
-
     }
 
     public ValidatableResponse updatePetByFormData(long petId) {
@@ -79,7 +78,6 @@ public class PetEndpoint {
                 .log()
                 .all()
                 .body("message", is(String.valueOf(petId)));
-
     }
 
     public ValidatableResponse getPetByStatus(String status) {

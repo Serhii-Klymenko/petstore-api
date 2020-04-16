@@ -14,13 +14,11 @@ public class GetPetByStatusTest {
     public void getPetByStatusSold() {
         String status = "sold";
         petEndpoint.getPetByStatus(status);
-
     }
 
     @Test
     public void getPetByStatusPending() {
         String status = "pending";
         petEndpoint.getPetByStatus(status);
-
     }
 }
