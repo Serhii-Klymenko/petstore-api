@@ -1,6 +1,5 @@
-
-    public enum Status {
+ public enum Status {
         AVAILABLE,
         SOLD,
         PENDING
-    }
+}
