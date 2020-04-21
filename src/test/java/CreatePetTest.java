@@ -14,7 +14,7 @@ public class CreatePetTest {
 
     @Test
     public void addNewPetToStore() {
-        Pet pet = new Pet(0, "Bob", "available");
+        Pet pet = new Pet(0, "Bob", Status.SOLD);
         ValidatableResponse response = petEndpoint.createPet(pet);
         petId = response.extract().path("id");
     }

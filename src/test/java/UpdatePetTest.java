@@ -10,7 +10,7 @@ public class UpdatePetTest {
 
     @Before
     public void createPet() {
-        Pet pet = new Pet(0, "Bob", "available");
+        Pet pet = new Pet(0, "Bob", Status.AVAILABLE);
         ValidatableResponse response = petEndpoint.createPet(pet);
         petId = response.extract().path("id");
     }
@@ -22,7 +22,7 @@ public class UpdatePetTest {
 
     @Test
     public void updateExistingPet() {
-        Pet pet = new Pet(petId, "UmaTurman", "sold");
+        Pet pet = new Pet(petId, "UmaTurman", Status.AVAILABLE);
         petEndpoint.updatePet(pet, petId);
     }
 }

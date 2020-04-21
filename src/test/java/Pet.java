@@ -7,10 +7,10 @@ public class Pet {
     private String name;
     private List<String> photoUrls;
     private List<Object> tags;
-    private String status;
+    private Status status;
 
 
-    public Pet(long id, String name, String status) {
+    public Pet(long id, String name, Status status) {
         this.id = id;
         this.category = new Category(3445, "Scooby");
         this.name = name;
@@ -39,7 +39,7 @@ public class Pet {
         return tags;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 }
