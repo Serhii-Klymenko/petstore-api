@@ -6,6 +6,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
+import java.io.File;
+
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.*;
 
@@ -17,6 +19,7 @@ public class PetEndpoint {
     private final static String UPDATE_PET_BY_ID = "/pet";
     private final static String UPDATE_PET_BY_FORM_DATA = "/pet/{id}";
     private final static String GET_PET_BY_STATUS = "/pet/findByStatus?status={status}";
+    private final static String UPLOAD_IMAGE = "pet/{id}/uploadImage";
 
     static {
         RestAssured.filters(new RequestLoggingFilter(LogDetail.ALL));
@@ -83,6 +86,17 @@ public class PetEndpoint {
                 .get(GET_PET_BY_STATUS, status)
                 .then()
                 .body("status", everyItem(equalTo(status)));
+    }
+
+    public ValidatableResponse uploadImage(long petId) {
+        return given()
+                .contentType("multipart/form-data")
+                .param("additionalMetadata", "TEXT")
+                .multiPart(new File("src/test/data/Image11.jpg"))
+                .when()
+                .post(UPLOAD_IMAGE, petId)
+                .then()
+                .statusCode(SC_OK);
     }
 
 }
