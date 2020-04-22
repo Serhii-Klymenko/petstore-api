@@ -33,13 +33,16 @@ public class PetEndpoint {
                 .contentType(ContentType.JSON);
     }
 
-    public ValidatableResponse createPet(Pet pet) {
-        return given()
+    public long createPet(Pet pet) {
+        ValidatableResponse response =
+                given()
                 .body(pet)
                 .when()
                 .post(CREATE_PET)
                 .then()
+                .body("name", is(pet.getName()))
                 .statusCode(SC_OK);
+        return response.extract().path("id");
     }
 
     public ValidatableResponse getPet(long petId) {
@@ -83,12 +86,12 @@ public class PetEndpoint {
 
     }
 
-    public ValidatableResponse getPetByStatus(String status) {
+    public ValidatableResponse getPetByStatus(Status status) {
         return given()
                 .when()
-                .get(GET_PET_BY_STATUS, status)
+                .get(GET_PET_BY_STATUS, status.getValue())
                 .then()
-                .body("status", everyItem(equalTo(status)))
+                .body("status", everyItem(equalTo(status.getValue())))
                 .statusCode(SC_OK);
 
     }

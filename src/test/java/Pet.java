@@ -7,7 +7,7 @@ public class Pet {
     private String name;
     private List<String> photoUrls;
     private List<Object> tags;
-    private Status status;
+    private String status;
 
 
     public Pet(long id, String name, Status status) {
@@ -15,7 +15,7 @@ public class Pet {
         this.category = new Category(3445, "Scooby");
         this.name = name;
         this.photoUrls = Arrays.asList("Photo", "Photo");
-        this.status = status;
+        this.status = status.getValue();
         this.tags = Arrays.asList(new Tags(65, "Lassy"));
     }
 
@@ -39,7 +39,7 @@ public class Pet {
         return tags;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 }

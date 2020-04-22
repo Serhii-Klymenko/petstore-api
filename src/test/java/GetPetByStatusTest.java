@@ -6,19 +6,16 @@ public class GetPetByStatusTest {
 
     @Test
     public void getPetByStatusAvailable() {
-        String status = "available";
-        petEndpoint.getPetByStatus(status);
+        petEndpoint.getPetByStatus(Status.AVAILABLE);
     }
 
     @Test
     public void getPetByStatusSold() {
-        String status = "sold";
-        petEndpoint.getPetByStatus(status);
+        petEndpoint.getPetByStatus(Status.SOLD);
     }
 
     @Test
     public void getPetByStatusPending() {
-        String status = "pending";
-        petEndpoint.getPetByStatus(status);
+        petEndpoint.getPetByStatus(Status.PENDING);
     }
 }

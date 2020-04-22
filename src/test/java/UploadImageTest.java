@@ -1,4 +1,3 @@
-import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,8 +9,7 @@ public class UploadImageTest {
     @Before
     public void createPet() {
         Pet pet = new Pet(0, "Bob", Status.AVAILABLE);
-        ValidatableResponse response = petEndpoint.createPet(pet);
-        petId = response.extract().path("id");
+        petId = petEndpoint.createPet(pet);
     }
 
     @After
