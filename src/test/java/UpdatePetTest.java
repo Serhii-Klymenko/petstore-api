@@ -23,6 +23,6 @@ public class UpdatePetTest {
     @Test
     public void updateExistingPet() {
         Pet pet = new Pet(petId, "UmaTurman", Status.PENDING);
-        petEndpoint.updatePet(pet, petId);
+        petEndpoint.updatePet(pet);
     }
 }
