@@ -72,11 +72,11 @@ public class PetEndpoint {
                 .statusCode(SC_OK);
     }
 
-    public ValidatableResponse updatePetByFormData(long petId) {
+    public ValidatableResponse updatePetByFormData(long petId, String petName, Status status) {
         return given()
                 .contentType("application/x-www-form-urlencoded")
-                .param("name", "Jackie")
-                .param("status", Status.SOLD)
+                .param("name", petName)
+                .param("status", status)
                 .when()
                 .post(UPDATE_PET_BY_FORM_DATA, petId)
                 .then()
@@ -95,11 +95,11 @@ public class PetEndpoint {
 
     }
 
-    public ValidatableResponse uploadImage(long petId, String path) {
+    public ValidatableResponse uploadImage(long petId, String additionalData, String path) {
         File file = new File(path);
         return given()
                 .contentType("multipart/form-data")
-                .param("additionalMetadata", "Some_text")
+                .param("additionalMetadata", additionalData)
                 .multiPart(file)
                 .when()
                 .post(UPLOAD_IMAGE, petId)

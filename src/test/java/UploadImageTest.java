@@ -21,6 +21,6 @@ public class UploadImageTest {
 
     @Test
     public void uploadImage() {
-        petEndpoint.uploadImage(petId,"src/test/data/Image11.jpg");
+        petEndpoint.uploadImage(petId, "Additional data to pass to server", "src/test/data/Image11.jpg");
     }
 }

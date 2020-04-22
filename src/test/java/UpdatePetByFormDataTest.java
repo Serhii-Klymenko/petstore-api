@@ -22,7 +22,7 @@ public class UpdatePetByFormDataTest {
 
     @Test
     public void updatePetByDataForm() {
-        petEndpoint.updatePetByFormData(petId);
+        petEndpoint.updatePetByFormData(petId, "Jackie", Status.SOLD);
     }
 
 }
