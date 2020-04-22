@@ -1,11 +1,9 @@
 import io.restassured.RestAssured;
-import io.restassured.builder.MultiPartSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
-import io.restassured.specification.MultiPartSpecification;
 import io.restassured.specification.RequestSpecification;
 
 import java.io.File;
@@ -49,7 +47,7 @@ public class PetEndpoint {
                 .when()
                 .get(GET_PET_BY_ID, petId)
                 .then()
-                .body("id", anyOf(is(petId), is(Status.AVAILABLE)))
+                .body("id", is(petId))
                 .statusCode(SC_OK);
     }
 
