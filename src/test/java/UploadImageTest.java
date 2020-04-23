@@ -19,6 +19,6 @@ public class UploadImageTest {
 
     @Test
     public void uploadImage() {
-        petEndpoint.uploadImage(petId, "Some_Text", "src/test/data/Image11.jpg");
+        petEndpoint.uploadImage(petId, "Some_Text", "src/test/resources/file-example_JPEG_900_kB.jpeg");
     }
 }

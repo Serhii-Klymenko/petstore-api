@@ -96,8 +96,8 @@ public class PetEndpoint {
 
     }
 
-    public ValidatableResponse uploadImage(long petId, String additionalData, String path) {
-        File file = new File(path);
+    public ValidatableResponse uploadImage(long petId, String additionalData, String fileName) {
+        File file = new File(getClass().getClassLoader().getResource(fileName).getFile());
         return given()
                 .contentType("multipart/form-data")
                 .param("additionalMetadata", additionalData)
