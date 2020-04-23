@@ -96,7 +96,7 @@ public class PetEndpoint {
 
     }
 
-    public ValidatableResponse uploadImage(long petId, String additionalData, String fileName) {
+    public ValidatableResponse uploadImage(long petId, String additionalData, String fileName, int statusCode) {
         File file = new File(getClass().getClassLoader().getResource(fileName).getFile());
         return given()
                 .contentType("multipart/form-data")
@@ -106,7 +106,7 @@ public class PetEndpoint {
                 .post(UPLOAD_IMAGE, petId)
                 .then()
                 .body("message", anything(file.getName()))
-                .statusCode(SC_OK);
+                .statusCode(statusCode);
     }
 
 }
