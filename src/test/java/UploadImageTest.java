@@ -1,12 +1,19 @@
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Steps;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_OK;
 
+
+@RunWith(SerenityRunner.class)
 public class UploadImageTest {
-    private PetEndpoint petEndpoint = new PetEndpoint();
+
+    @Steps
+    private PetEndpoint petEndpoint;
     private long petId;
 
     @Before
@@ -22,7 +29,7 @@ public class UploadImageTest {
 
     @Test
     public void uploadImageJpeg() {
-        petEndpoint.uploadImage(petId, "Some_Text", "File-example_JPEG_900_kB.jpeg", SC_OK);
+        petEndpoint.uploadImage(petId, "Some_Text", "File-example_JPEG_55_kB.jpeg", SC_OK);
     }
 
     @Test
