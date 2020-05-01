@@ -1,20 +1,38 @@
-import net.serenitybdd.junit.runners.SerenityRunner;
+import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.junit.annotations.TestData;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
+import java.util.Arrays;
+import java.util.Collection;
+
 import static org.apache.http.HttpStatus.SC_OK;
 
-
-@RunWith(SerenityRunner.class)
+@RunWith(SerenityParameterizedRunner.class)
 public class UploadImageTest {
 
     @Steps
     private PetEndpoint petEndpoint;
+
     private long petId;
+    private final String fileName;
+
+    public UploadImageTest(String fileName) {
+        this.fileName = fileName;
+    }
+
+    @TestData
+    public static Collection<Object[]> testData() {
+        return Arrays.asList(new Object[][]{
+                {"File-example_JPEG_55_kB.jpeg"},
+                {"File-example_JPG_5MB.jpg"},
+                {"File_example_PNG_3MB.png"},
+                {"File-example_PDF_55_MB.pdf"},
+        });
+    }
 
     @Before
     public void createPet() {
@@ -28,29 +46,7 @@ public class UploadImageTest {
     }
 
     @Test
-    public void uploadImageJpeg() {
-        petEndpoint.uploadImage(petId, "Some_Text", "File-example_JPEG_55_kB.jpeg", SC_OK);
+    public void uploadImage() {
+        petEndpoint.uploadImage(petId, "Some_Text", fileName, SC_OK);
     }
-
-    @Test
-    public void uploadImageJpg() {
-        petEndpoint.uploadImage(petId, "Some_Text", "File-example_JPG_5MB.jpg", SC_OK);
-    }
-
-    @Test
-    public void uploadImagePng() {
-        petEndpoint.uploadImage(petId, "Some_Text", "File_example_PNG_3MB.png", SC_OK);
-    }
-
-    //Negative
-    @Test
-    public void uploadImageGif() {
-        petEndpoint.uploadImage(petId, "Some_Text", "File_example_GIF_1MB.gif", SC_BAD_REQUEST);
-    }
-
-    @Test
-    public void uploadImagePdf() {
-        petEndpoint.uploadImage(petId, "Some_Text", "File-example_PDF_500_kB.pdf", SC_BAD_REQUEST);
-    }
-
 }
