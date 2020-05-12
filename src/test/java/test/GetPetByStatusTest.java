@@ -42,8 +42,9 @@ public class GetPetByStatusTest {
                 .id(0)
                 .name("Bob")
                 .status(Status.AVAILABLE)
-                .category(Category
-                        .builder()
+                .category(Category.builder()
+                        .id(34)
+                        .name("Joe")
                         .build())
                 .build();
         petId = petEndpoint.createPet(pet);

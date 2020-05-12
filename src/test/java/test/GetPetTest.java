@@ -20,7 +20,6 @@ public class GetPetTest {
 
     @Before
     public void createPet() {
-        //Pet pet = new Pet(0, "Bob", Status.AVAILABLE);
         Pet pet = Pet.builder()
                 .id(0)
                 .name("Bob")
