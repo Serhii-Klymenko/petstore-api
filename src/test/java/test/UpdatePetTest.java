@@ -1,3 +1,8 @@
+package test;
+
+import endPoint.PetEndpoint;
+import model.Pet;
+import model.Status;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.After;
@@ -6,7 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SerenityRunner.class)
-public class GetPetTest {
+public class UpdatePetTest {
 
     @Steps
     private PetEndpoint petEndpoint;
@@ -24,7 +29,8 @@ public class GetPetTest {
     }
 
     @Test
-    public void getPetById() {
-        petEndpoint.getPet(petId);
+    public void updateExistingPet() {
+        Pet pet = new Pet(petId, "UmaTurman", Status.PENDING);
+        petEndpoint.updatePet(pet);
     }
 }

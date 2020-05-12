@@ -1,6 +1,13 @@
+package model;
+
+import lombok.Builder;
+import lombok.Getter;
 import java.util.Arrays;
 import java.util.List;
 
+
+//@Builder
+@Getter
 public class Pet {
     private long id;
     private Category category;
@@ -17,30 +24,6 @@ public class Pet {
         this.photoUrls = Arrays.asList("Photo", "Photo");
         this.status = status.getValue();
         this.tags = Arrays.asList(new Tags(65, "Lassy"));
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<String> getPhotoUrls() {
-        return photoUrls;
-    }
-
-    public List<Object> getTags() {
-        return tags;
-    }
-
-    public String getStatus() {
-        return status;
     }
 }
 
