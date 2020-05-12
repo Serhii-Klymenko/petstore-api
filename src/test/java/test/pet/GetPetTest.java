@@ -1,4 +1,4 @@
-package test;
+package test.pet;
 
 import endPoint.PetEndpoint;
 import model.Category;
@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SerenityRunner.class)
-public class UpdatePetByFormDataTest {
+public class GetPetTest {
 
     @Steps
     private PetEndpoint petEndpoint;
@@ -37,8 +37,7 @@ public class UpdatePetByFormDataTest {
     }
 
     @Test
-    public void updatePetByDataForm() {
-        petEndpoint.updatePetByFormData(petId, "Jackie", Status.SOLD);
+    public void getPetById() {
+        petEndpoint.getPet(petId);
     }
-
 }

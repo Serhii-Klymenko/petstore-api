@@ -1,4 +1,4 @@
-package test;
+package test.pet;
 
 import endPoint.PetEndpoint;
 import model.Category;
@@ -6,13 +6,12 @@ import model.Pet;
 import model.Status;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SerenityRunner.class)
-public class GetPetTest {
+public class DeletePetTest {
 
     @Steps
     private PetEndpoint petEndpoint;
@@ -31,13 +30,8 @@ public class GetPetTest {
         petId = petEndpoint.createPet(pet);
     }
 
-    @After
-    public void deletePet() {
-        petEndpoint.deletePet(petId);
-    }
-
     @Test
-    public void getPetById() {
-        petEndpoint.getPet(petId);
+    public void deletePetById() {
+        petEndpoint.deletePet(petId);
     }
 }

@@ -1,4 +1,4 @@
-package test;
+package test.pet;
 
 import endPoint.PetEndpoint;
 import model.Category;
@@ -15,28 +15,24 @@ import org.junit.runner.RunWith;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.apache.http.HttpStatus.SC_OK;
-
 @RunWith(SerenityParameterizedRunner.class)
-public class UploadImageTest {
+public class GetPetByStatusTest {
 
     @Steps
     private PetEndpoint petEndpoint;
-
     private long petId;
-    private final String fileName;
+    private final Status status;
 
-    public UploadImageTest(String fileName) {
-        this.fileName = fileName;
+    public GetPetByStatusTest(Status status) {
+        this.status = status;
     }
 
     @TestData
     public static Collection<Object[]> testData() {
         return Arrays.asList(new Object[][]{
-                {"File-example_JPEG_55_kB.jpeg"},
-                {"File-example_JPG_5MB.jpg"},
-                {"File_example_PNG_3MB.png"},
-                {"File-example_PDF_55_MB.pdf"},
+                {Status.AVAILABLE},
+                {Status.SOLD},
+                {Status.PENDING},
         });
     }
 
@@ -46,8 +42,9 @@ public class UploadImageTest {
                 .id(0)
                 .name("Bob")
                 .status(Status.AVAILABLE)
-                .category(Category
-                        .builder()
+                .category(Category.builder()
+                        .id(34)
+                        .name("Joe")
                         .build())
                 .build();
         petId = petEndpoint.createPet(pet);
@@ -59,7 +56,7 @@ public class UploadImageTest {
     }
 
     @Test
-    public void uploadImage() {
-        petEndpoint.uploadImage(petId, "Some_Text", fileName, SC_OK);
+    public void getPetByStatus() {
+        petEndpoint.getPetByStatus(status);
     }
 }
