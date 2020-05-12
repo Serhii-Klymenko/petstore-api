@@ -2,11 +2,11 @@ package model;
 
 public enum Status {
 
-    AVAILABLE("available"),
-    SOLD("sold"),
-    PENDING("pending");
+    AVAILABLE,
+    SOLD,
+    PENDING;
 
-    private String value;
+   /* private String value;
 
     public String getValue() {
         return this.value;
@@ -14,5 +14,5 @@ public enum Status {
 
     Status(String value) {
         this.value = value;
-    }
+    }*/
 }

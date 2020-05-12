@@ -1,6 +1,7 @@
 package test;
 
 import endPoint.PetEndpoint;
+import model.Category;
 import model.Pet;
 import model.Status;
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -23,7 +24,14 @@ public class CreatePetTest {
 
     @Test
     public void addNewPetToStore() {
-        Pet pet = new Pet(0, "Bob", Status.SOLD);
+        Pet pet = Pet.builder()
+                .id(0)
+                .name("Bob")
+                .status(Status.SOLD)
+                .category(Category
+                        .builder()
+                        .build())
+                .build();
         petId = petEndpoint.createPet(pet);
     }
 }

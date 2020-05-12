@@ -46,7 +46,7 @@ public class PetEndpoint {
                 .when()
                 .post(CREATE_PET)
                 .then()
-                .body("name", is(pet.getName))
+                .body("name", is(pet.getName()))
                 .statusCode(SC_OK);
         return response.extract().path("id");
     }
@@ -78,7 +78,7 @@ public class PetEndpoint {
                 .when()
                 .put(UPDATE_PET_BY_ID)
                 .then()
-                .body("name", is(pet.getName))
+                .body("name", is(pet.getName()))
                 .statusCode(SC_OK);
     }
 
@@ -100,9 +100,9 @@ public class PetEndpoint {
     public ValidatableResponse getPetByStatus(Status status) {
         return given()
                 .when()
-                .get(GET_PET_BY_STATUS, status.getValue())
+                .get(GET_PET_BY_STATUS, status)
                 .then()
-                .body("status", everyItem(equalTo(status.getValue())))
+                .body("status", everyItem(equalTo(status)))
                 .statusCode(SC_OK);
 
     }
