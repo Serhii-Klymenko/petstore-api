@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Random;
+
 @RunWith(SerenityRunner.class)
 public class DeleteOrderTest {
 
@@ -17,8 +19,9 @@ public class DeleteOrderTest {
 
     @Before
     public void createOrder() {
+        Random random = new Random();
         Order order = Order.builder()
-                .id((int) (Math.random()*10))
+                .id(random.nextInt((10 - 1) + 1) + 1)
                 .petId(56)
                 .quantity(1)
                 .shipDate(System.currentTimeMillis())

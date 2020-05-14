@@ -8,6 +8,8 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Random;
+
 @RunWith(SerenityRunner.class)
 public class CreateOrderTest {
 
@@ -22,8 +24,9 @@ public class CreateOrderTest {
 
     @Test
     public void createOrder() {
+        Random random = new Random();
         Order order = Order.builder()
-                .id((int) (Math.random()*10))
+                .id(random.nextInt((10 - 1) + 1) + 1)
                 .petId(56)
                 .quantity(1)
                 .shipDate(System.currentTimeMillis())
