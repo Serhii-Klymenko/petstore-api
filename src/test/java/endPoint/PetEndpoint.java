@@ -164,8 +164,6 @@ public class PetEndpoint {
                 .when()
                 .get(GET_INVENTORIES_BY_STATUS)
                 .then()
-                //.body("id", is(orderId))
                 .statusCode(SC_OK);
     }
-
 }
