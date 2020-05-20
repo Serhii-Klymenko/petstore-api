@@ -6,6 +6,7 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import net.serenitybdd.rest.SerenityRest;
 
 public class BaseStepClass {
+    //remove
 
     static {
         SerenityRest.filters(new RequestLoggingFilter(LogDetail.ALL));
