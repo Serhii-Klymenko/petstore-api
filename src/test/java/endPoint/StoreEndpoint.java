@@ -34,12 +34,7 @@ public class StoreEndpoint {
                         .then()
                         .body("id", is(order.getId()))
                         .statusCode(SC_OK);
-        return response.extract().path("id private RequestSpecification given() {\n" +
-                "        return SerenityRest\n" +
-                "                .given()\n" +
-                "                .baseUri(\"https://petstore.swagger.io/v2\")\n" +
-                "                .contentType(ContentType.JSON);\n" +
-                "    }");
+        return response.extract().path("id");
     }
 
     @Step

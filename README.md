@@ -1,3 +1,15 @@
+DESCRIPTION:
+
+Project contains:
+- automation tests for Swagger Petstore
+- separate Class Folders: endPoint, model, test
+
+Were implemented tests:
+- pet API
+- store API
+
+SETUP:
+
 Installing Intellij idea: (macOS)
 
 1. Install ‘Homebrew’ (Package Manager for macOS)
@@ -19,27 +31,25 @@ Installing Intellij idea: (macOS)
 4. Install Maven via Homebrew brew install maven
 4.1 Verify that Maven was installed mvn -version
 
-Connect plugins:
-
-1. Serenity BDD (for RestAssured)
+5. Install Serenity BDD (for RestAssured)
 Choose version and copy in pom.xml from link
 https://mvnrepository.com/artifact/net.serenity-bdd/serenity-rest-assured
 
-2. Serenity BDD (for JUnit)
+6. Install Serenity BDD (for JUnit)
 Choose version and copy in pom.xml from link
 https://mvnrepository.com/artifact/net.serenity-bdd/serenity-junit
 
-3. Serenity (for Reports)
+7. Install Serenity BDD (for Reports)
 Choose version and copy in pom.xml from link
 https://mvnrepository.com/artifact/net.serenity-bdd.maven.plugins/serenity-maven-plugin
 
-3.1 View Serenity HTML report:
+7.1 View Serenity HTML report
 After TestRunning execute:
     mvn serenity:aggregate
     
-4. Lombock (for Getter/Setter/Builder)
-<dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.10</version>
-</dependency>
+8. Install Lombok plugin (for Getter/Setter/Builder)
+8.1 Choose version and copy in pom.xml from link
+    https://projectlombok.org/setup/maven
+8.2 Open Preferences
+8.3 Choose 'Plugin'
+8.4 Install 'Lombok'

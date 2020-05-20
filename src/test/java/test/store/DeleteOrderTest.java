@@ -3,20 +3,14 @@ package test.store;
 import endPoint.BaseStepClass;
 import endPoint.PetEndpoint;
 import endPoint.StoreEndpoint;
-import model.Category;
-import model.Order;
-import model.OrderStatus;
-import model.Pet;
+import model.*;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.Random;
-
-import static model.PetStatus.AVAILABLE;
 
 @RunWith(SerenityRunner.class)
 public class DeleteOrderTest extends BaseStepClass {
@@ -35,7 +29,7 @@ public class DeleteOrderTest extends BaseStepClass {
         Pet pet = Pet.builder()
                 .id(0)
                 .name("Bob")
-                .status(AVAILABLE)
+                .status(PetStatus.AVAILABLE)
                 .category(Category
                         .builder()
                         .build())
@@ -52,11 +46,6 @@ public class DeleteOrderTest extends BaseStepClass {
                 .complete(true)
                 .build();
         orderId = storeEndpoint.createOrder(order);
-    }
-
-    @After
-    public void getOrder() {
-        storeEndpoint.getOrder(orderId);
     }
 
     @Test
