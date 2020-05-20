@@ -1,6 +1,5 @@
 package test.store;
 
-import endPoint.BaseStepClass;
 import endPoint.StoreEndpoint;
 import model.Order;
 import model.OrderStatus;
@@ -13,7 +12,7 @@ import org.junit.runner.RunWith;
 import java.util.Random;
 
 @RunWith(SerenityRunner.class)
-public class CreateOrderTest extends BaseStepClass {
+public class CreateOrderTest {
 
     @Steps
     private StoreEndpoint storeEndpoint;

@@ -1,6 +1,5 @@
 package test.pet;
 
-import endPoint.BaseStepClass;
 import endPoint.PetEndpoint;
 import model.Category;
 import model.Pet;
@@ -19,7 +18,7 @@ import java.util.Collection;
 import static org.apache.http.HttpStatus.SC_OK;
 
 @RunWith(SerenityParameterizedRunner.class)
-public class UploadImageTest extends BaseStepClass {
+public class UploadImageTest {
 
     @Steps
     private PetEndpoint petEndpoint;

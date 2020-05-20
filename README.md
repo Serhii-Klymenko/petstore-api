@@ -2,7 +2,7 @@ DESCRIPTION:
 
 Project contains:
 - automation tests for Swagger Petstore
-- separate Class Folders: endPoint, model, test
+- Split class folders: endPoint, model, test
 
 Were implemented tests:
 - pet API
