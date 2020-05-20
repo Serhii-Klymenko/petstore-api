@@ -1,8 +1,5 @@
 package endPoint;
 
-import io.restassured.filter.log.LogDetail;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
@@ -19,11 +16,6 @@ public class StoreEndpoint {
     private final static String GET_ORDER_BY_ID = "/store/order/{id}";
     private final static String DELETE_ORDER_BY_ID = "/store/order/{id}";
     private final static String GET_INVENTORIES_BY_STATUS = "/store/inventory";
-
-    static {
-        SerenityRest.filters(new RequestLoggingFilter(LogDetail.ALL));
-        SerenityRest.filters(new ResponseLoggingFilter(LogDetail.ALL));
-    }
 
     private RequestSpecification given() {
         return SerenityRest
@@ -42,7 +34,12 @@ public class StoreEndpoint {
                         .then()
                         .body("id", is(order.getId()))
                         .statusCode(SC_OK);
-        return response.extract().path("id");
+        return response.extract().path("id private RequestSpecification given() {\n" +
+                "        return SerenityRest\n" +
+                "                .given()\n" +
+                "                .baseUri(\"https://petstore.swagger.io/v2\")\n" +
+                "                .contentType(ContentType.JSON);\n" +
+                "    }");
     }
 
     @Step

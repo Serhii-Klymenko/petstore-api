@@ -1,8 +1,5 @@
 package endPoint;
 
-import io.restassured.filter.log.LogDetail;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
@@ -29,11 +26,6 @@ public class PetEndpoint {
     private final static String GET_ORDER_BY_ID = "/store/order/{id}";
     private final static String DELETE_ORDER_BY_ID = "/store/order/{id}";
     private final static String GET_INVENTORIES_BY_STATUS = "/store/inventory";
-
-    static {
-        SerenityRest.filters(new RequestLoggingFilter(LogDetail.ALL));
-        SerenityRest.filters(new ResponseLoggingFilter(LogDetail.ALL));
-    }
 
     private RequestSpecification given() {
         return SerenityRest

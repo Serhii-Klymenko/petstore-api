@@ -15,4 +15,5 @@ public enum PetStatus {
     PetStatus(String value) {
         this.value = value;
     }
+
 }
