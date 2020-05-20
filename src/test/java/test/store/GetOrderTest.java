@@ -1,7 +1,8 @@
 package test.store;
 
-import endPoint.PetEndpoint;
+import endPoint.StoreEndpoint;
 import model.Order;
+import model.OrderStatus;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.After;
@@ -15,7 +16,7 @@ import java.util.Random;
 public class GetOrderTest {
 
     @Steps
-    private PetEndpoint petEndpoint;
+    private StoreEndpoint storeEndpoint;
     private int orderId;
 
     @Before
@@ -26,19 +27,19 @@ public class GetOrderTest {
                 .petId(56)
                 .quantity(1)
                 .shipDate(System.currentTimeMillis())
-                .status("placed")
+                .status(OrderStatus.PLACED)
                 .complete(true)
                 .build();
-        orderId = petEndpoint.createOrder(order);
+        orderId = storeEndpoint.createOrder(order);
     }
 
     @After
     public void deleteOrder() {
-        petEndpoint.deleteOrder(orderId);
+        storeEndpoint.deleteOrder(orderId);
     }
 
     @Test
     public void getOrder() {
-        petEndpoint.getOrder(orderId);
+        storeEndpoint.getOrder(orderId);
     }
 }

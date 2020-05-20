@@ -3,7 +3,7 @@ package test.pet;
 import endPoint.PetEndpoint;
 import model.Category;
 import model.Pet;
-import model.Status;
+import model.PetStatus;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.junit.annotations.TestData;
@@ -15,24 +15,26 @@ import org.junit.runner.RunWith;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static model.PetStatus.*;
+
 @RunWith(SerenityParameterizedRunner.class)
-public class GetPetByStatusTest {
+public class GetPetByPetStatusTest {
 
     @Steps
     private PetEndpoint petEndpoint;
     private long petId;
-    private final Status status;
+    private final PetStatus status;
 
-    public GetPetByStatusTest(Status status) {
+    public GetPetByPetStatusTest(PetStatus status) {
         this.status = status;
     }
 
     @TestData
     public static Collection<Object[]> testData() {
         return Arrays.asList(new Object[][]{
-                {Status.AVAILABLE},
-                {Status.SOLD},
-                {Status.PENDING},
+                {AVAILABLE},
+                {SOLD},
+                {PENDING},
         });
     }
 
@@ -41,7 +43,7 @@ public class GetPetByStatusTest {
         Pet pet = Pet.builder()
                 .id(0)
                 .name("Bob")
-                .status(Status.AVAILABLE)
+                .status(AVAILABLE)
                 .category(Category.builder()
                         .id(34)
                         .name("Joe")

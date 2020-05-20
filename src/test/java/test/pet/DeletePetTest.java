@@ -3,7 +3,7 @@ package test.pet;
 import endPoint.PetEndpoint;
 import model.Category;
 import model.Pet;
-import model.Status;
+import model.PetStatus;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Before;
@@ -22,7 +22,7 @@ public class DeletePetTest {
         Pet pet = Pet.builder()
                 .id(0)
                 .name("Bob")
-                .status(Status.AVAILABLE)
+                .status(PetStatus.AVAILABLE)
                 .category(Category
                         .builder()
                         .build())

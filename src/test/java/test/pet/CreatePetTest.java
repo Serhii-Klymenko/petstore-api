@@ -3,7 +3,7 @@ package test.pet;
 import endPoint.PetEndpoint;
 import model.Category;
 import model.Pet;
-import model.Status;
+import model.PetStatus;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.After;
@@ -27,7 +27,7 @@ public class CreatePetTest {
         Pet pet = Pet.builder()
                 .id(0)
                 .name("Bob")
-                .status(Status.SOLD)
+                .status(PetStatus.SOLD)
                 .category(Category
                         .builder()
                         .build())

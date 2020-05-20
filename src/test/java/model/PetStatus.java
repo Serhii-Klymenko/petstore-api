@@ -1,6 +1,6 @@
 package model;
 
-public enum Status {
+public enum PetStatus {
 
     AVAILABLE("available"),
     SOLD("sold"),
@@ -12,7 +12,7 @@ public enum Status {
         return this.value;
     }
 
-    Status(String value) {
+    PetStatus(String value) {
         this.value = value;
     }
 }

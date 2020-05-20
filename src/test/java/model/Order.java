@@ -10,6 +10,6 @@ public class Order {
     private long petId;
     private int quantity;
     private long shipDate;
-    private String status;
+    private OrderStatus status;
     private boolean complete;
 }

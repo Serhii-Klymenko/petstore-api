@@ -8,7 +8,7 @@ import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import model.Order;
 import model.Pet;
-import model.Status;
+import model.PetStatus;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 import java.io.File;
@@ -87,7 +87,7 @@ public class PetEndpoint {
     }
 
     @Step
-    public ValidatableResponse updatePetByFormData(long petId, String petName, Status status) {
+    public ValidatableResponse updatePetByFormData(long petId, String petName, PetStatus status) {
         return given()
                 .contentType("application/x-www-form-urlencoded")
                 .param("name", petName)
@@ -101,7 +101,7 @@ public class PetEndpoint {
     }
 
     @Step
-    public ValidatableResponse getPetByStatus(Status status) {
+    public ValidatableResponse getPetByStatus(PetStatus status) {
         return given()
                 .when()
                 .get(GET_PET_BY_STATUS, status.getValue())
