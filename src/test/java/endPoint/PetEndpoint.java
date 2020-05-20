@@ -9,7 +9,7 @@ import java.io.File;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.*;
 
-public class PetEndpoint extends BaseStepClass{
+public class PetEndpoint extends BaseClass {
 
     private final static String CREATE_PET = "/pet";
     private final static String GET_PET_BY_ID = "/pet/{id}";

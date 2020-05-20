@@ -7,7 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 
-public class BaseStepClass {
+public class BaseClass {
 
     static {
         SerenityRest.filters(new RequestLoggingFilter(LogDetail.ALL));

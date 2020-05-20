@@ -7,7 +7,7 @@ import net.thucydides.core.annotations.Step;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.is;
 
-public class StoreEndpoint extends BaseStepClass{
+public class StoreEndpoint extends BaseClass {
 
     private final static String CREATE_ORDER = "/store/order";
     private final static String GET_ORDER_BY_ID = "/store/order/{id}";
