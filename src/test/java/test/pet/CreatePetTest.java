@@ -1,5 +1,6 @@
 package test.pet;
 
+import endPoint.BaseStepClass;
 import endPoint.PetEndpoint;
 import model.Category;
 import model.Pet;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
 import static model.PetStatus.SOLD;
 
 @RunWith(SerenityRunner.class)
-public class CreatePetTest {
+public class CreatePetTest extends BaseStepClass {
 
     @Steps
     private PetEndpoint petEndpoint;

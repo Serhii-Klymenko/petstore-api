@@ -1,5 +1,6 @@
 package test.pet;
 
+import endPoint.BaseStepClass;
 import endPoint.PetEndpoint;
 import model.Category;
 import model.Pet;
@@ -18,7 +19,7 @@ import java.util.Collection;
 import static model.PetStatus.*;
 
 @RunWith(SerenityParameterizedRunner.class)
-public class GetPetByPetStatusTest {
+public class GetPetByPetStatusTest extends BaseStepClass {
 
     @Steps
     private PetEndpoint petEndpoint;

@@ -15,3 +15,31 @@ Installing Intellij idea: (macOS)
 3.1 Open https://www.jetbrains.com/idea/download/#section=mac
 3.2 Download ‘Community’ version
 3.3 Install on your computer
+
+4. Install Maven via Homebrew brew install maven
+4.1 Verify that Maven was installed mvn -version
+
+Connect plugins:
+
+1. Serenity BDD (for RestAssured)
+Choose version and copy in pom.xml from link
+https://mvnrepository.com/artifact/net.serenity-bdd/serenity-rest-assured
+
+2. Serenity BDD (for JUnit)
+Choose version and copy in pom.xml from link
+https://mvnrepository.com/artifact/net.serenity-bdd/serenity-junit
+
+3. Serenity (for Reports)
+Choose version and copy in pom.xml from link
+https://mvnrepository.com/artifact/net.serenity-bdd.maven.plugins/serenity-maven-plugin
+
+3.1 View Serenity HTML report:
+After TestRunning execute:
+    mvn serenity:aggregate
+    
+4. Lombock (for Getter/Setter/Builder)
+<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+</dependency>

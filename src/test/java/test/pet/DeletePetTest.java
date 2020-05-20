@@ -1,5 +1,6 @@
 package test.pet;
 
+import endPoint.BaseStepClass;
 import endPoint.PetEndpoint;
 import model.Category;
 import model.Pet;
@@ -11,7 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SerenityRunner.class)
-public class DeletePetTest {
+public class DeletePetTest extends BaseStepClass {
 
     @Steps
     private PetEndpoint petEndpoint;
