@@ -1,8 +1,8 @@
 package test.store;
 
+import endPoint.PetEndpoint;
 import endPoint.StoreEndpoint;
-import model.Order;
-import model.OrderStatus;
+import model.*;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.After;
@@ -19,12 +19,27 @@ public class GetOrderTest {
     private StoreEndpoint storeEndpoint;
     private int orderId;
 
+    @Steps
+    private PetEndpoint petEndpoint;
+    private long petId;
+
     @Before
-    public void createOrder() {
+
+    public void createPrecondition() {
+        Pet pet = Pet.builder()
+                .id(0)
+                .name("Bob")
+                .status(PetStatus.AVAILABLE)
+                .category(Category
+                        .builder()
+                        .build())
+                .build();
+        petId = petEndpoint.createPet(pet);
+
         Random random = new Random();
         Order order = Order.builder()
                 .id(random.nextInt((10 - 1) + 1) + 1)
-                .petId(56)
+                .petId(petId)
                 .quantity(1)
                 .shipDate(System.currentTimeMillis())
                 .status(OrderStatus.PLACED)

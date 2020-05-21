@@ -42,7 +42,6 @@ https://mvnrepository.com/artifact/net.serenity-bdd/serenity-junit
 7. Install Serenity BDD (for Reports)
 Choose version and copy in pom.xml from link
 https://mvnrepository.com/artifact/net.serenity-bdd.maven.plugins/serenity-maven-plugin
-
 7.1 View Serenity HTML report
 After TestRunning execute:
     mvn serenity:aggregate
